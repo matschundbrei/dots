@@ -1,0 +1,39 @@
+# This is how one can set a reattach password:
+# password ODSJQf.4IJN7E    # "1234"
+# no annoying audible bell, please
+vbell on
+# detach on hangup
+autodetach on
+# don't display the copyright page
+startup_message off
+# emulate .logout message on power detach
+pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
+#advertise hardstatus support to $TERMCAP (terminal header)
+termcapinfo  * '' 'hs:ts=\E_:fs=\E\\:ds=\E_\E\\'
+# set every new windows hardstatus line to somenthing descriptive
+defhstatus "^En (^Et)"
+defscrollback 10000
+# enable support for the "alternate screen" capability in all windows
+altscreen on
+# keybindings
+#remove some stupid / dangerous key bindings
+bind k
+bind ^k
+bind .
+bind ^\
+bind \\
+bind ^h
+bind h
+#make them better
+bind 'K' kill
+bind 'I' login on
+bind 'O' login off
+bind '}' history
+# default windows
+# screen -t local 0
+# screen -t mail 1 mutt
+# screen -t 40 2 rlogin server
+defnonblock 1
+#trying tab from http://en.gentoo-wiki.com/wiki/Screen#Tab-bar
+hardstatus alwayslastline '%{= kG}%-Lw%{= kW}%50>%n%f* %t%{= kG}%+Lw%< %{= kG}%-=%H | %l %{-}'
+
